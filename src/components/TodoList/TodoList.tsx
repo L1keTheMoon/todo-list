@@ -25,7 +25,10 @@ export default function TodoList({ todos, toggleTodo }: TodoListProps) {
               dense
             >
               <Checkbox edge="start" checked={completed} disableRipple />
-              <ListItemText primary={text} />
+              <ListItemText
+                primary={text}
+                sx={{ textDecoration: completed ? "line-through" : "normal" }}
+              />
             </ListItemButton>
           </ListItem>
         ))}

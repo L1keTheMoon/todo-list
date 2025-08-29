@@ -15,14 +15,15 @@ describe("test", () => {
     addButton = screen.getByRole("button", { name: "Добавить" });
   });
 
-  test("Добавление дела в список", async () => {
-    await user.type(input, text);
-    expect(input).toHaveValue(text);
-    await user.click(addButton);
+  test("Добавление дела в список кнопкой enter и отметка его как выполненного", async () => {
+    await user.type(input, `${text}{enter}`);
 
     const newTodo = screen.getByTestId(`todo-${text}`);
     expect(newTodo).toBeInTheDocument();
     expect(input).toHaveValue("");
+
+    await user.click(newTodo);
+    expect(screen.getByRole("checkbox")).toBeChecked();
   });
 
   test("Ошибка при попытке добавить дело без названия и сброс ошибки при начале ввода", async () => {
@@ -32,6 +33,7 @@ describe("test", () => {
     expect(screen.queryAllByRole("listitem")).toHaveLength(0);
     await user.type(input, text);
     expect(input).toBeValid();
+    expect(input).toHaveValue(text);
     expect(screen.queryByText("Введите текст!")).not.toBeInTheDocument();
   });
 

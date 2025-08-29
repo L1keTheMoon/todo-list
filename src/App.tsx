@@ -12,20 +12,22 @@ function App() {
   let displayedTodos: Todo[] = todos;
 
   const toogleTodo = (index: number) => {
-    const newStatus = !todos[index].completed;
     setTodos((prevTodos) => {
-      const newTodos = [...prevTodos];
-      newTodos[index].completed = newStatus;
-      return newTodos;
+      return prevTodos.map((el, i) => {
+        if (i === index) {
+          return { ...el, completed: !el.completed };
+        } else {
+          return el;
+        }
+      });
     });
   };
 
   const addTodo = (todoText: string) => {
-    setTodos((prevTodos) => {
-      const newTodos = [...prevTodos];
-      newTodos.push({ text: todoText, completed: false });
-      return newTodos;
-    });
+    setTodos((prevTodos) => [
+      ...prevTodos,
+      { text: todoText, completed: false },
+    ]);
   };
 
   const clearCompleted = () => {
@@ -43,7 +45,7 @@ function App() {
   return (
     <Container sx={{ width: 700 }}>
       <Typography variant="h2" fontWeight={700} gutterBottom>
-        Список дел
+        Список дел для Mindbox
       </Typography>
       <AddTodoForm addTodo={addTodo} />
       <TodoList todos={displayedTodos} toggleTodo={toogleTodo} />
