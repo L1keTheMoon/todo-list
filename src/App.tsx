@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import { v4 as uuidv4 } from "uuid";
 import TodoList from "@/components/TodoList/TodoList";
 import { Filter, type Todo } from "@/types/types";
 import Menu from "@/components/Menu/Menu";

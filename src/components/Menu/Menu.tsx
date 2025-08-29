@@ -15,7 +15,6 @@ export default function Menu({
   setFilter,
   clearCompleted,
 }: MenuProps) {
-  console.log(Object.entries(Filter), filter);
   return (
     <Box
       sx={{
@@ -27,7 +26,7 @@ export default function Menu({
     >
       <Typography>Осталось: {activeCount}</Typography>
       <ButtonGroup size="small">
-        {Object.entries(Filter).map(([, value]) => (
+        {Object.values(Filter).map((value) => (
           <Button
             variant={filter === value ? "contained" : "outlined"}
             onClick={() => setFilter(value)}

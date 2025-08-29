@@ -20,7 +20,7 @@ export default function TodoList({ todos, toggleTodo }: TodoListProps) {
         {todos.map(({ text, completed }, index) => (
           <ListItem key={index} disablePadding>
             <ListItemButton
-              role={undefined}
+              data-testid={`todo-${text}`}
               onClick={() => toggleTodo(index)}
               dense
             >
