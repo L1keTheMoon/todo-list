@@ -5,6 +5,6 @@ export interface Todo {
 
 export enum Filter {
   all = 'Все',
-  active = 'Активные',
-  completed = 'Завершенные'
+  active = 'Невыполненные',
+  completed = 'Выполненные'
 };

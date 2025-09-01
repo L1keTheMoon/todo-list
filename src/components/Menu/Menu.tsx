@@ -36,7 +36,7 @@ export default function Menu({
         ))}
       </ButtonGroup>
       <Button size="small" variant="outlined" onClick={clearCompleted}>
-        Удалить завершенные
+        Удалить выполненные
       </Button>
     </Box>
   );
